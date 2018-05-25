@@ -21,6 +21,7 @@ enum GameCameraState {
 class CameraController: LuminaViewController {
     var cachedScoreEntry: ScoreEntry?
     var checkTimer: Timer?
+    var LastPlace : UIImage?
     var gameState = GameCameraState.shouldStartNewGame
     var consecutiveDetectionCount = 0
     var gameConfigObjects: [ObjectConfig]? {
@@ -85,6 +86,16 @@ class CameraController: LuminaViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         checkTimer?.invalidate()
+        let imageData = UIImageJPEGRepresentation(LastPlace!, 1)
+        let relativePath = "lastPlace.jpg"
+        let writePath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("lastPlace")
+        do {
+            try imageData?.write(to: writePath!)
+        } catch {
+            print("error")
+        }
+        UserDefaults.standard.set(relativePath, forKey: "lastPlace")
+        UserDefaults.standard.synchronize()
     }
     
     func determineGameState() {
@@ -200,6 +211,7 @@ extension CameraController: GameStartViewDelegate {
     }
 }
 
+
 extension CameraController: LuminaDelegate {
     func streamed(videoFrame: UIImage, with predictions: [LuminaRecognitionResult]?, from controller: LuminaViewController) {
         if gameState == .objectDetected {
@@ -211,7 +223,10 @@ extension CameraController: LuminaDelegate {
         guard let bestConfidence = predictions?.first?.predictions?.first?.confidence else {
             return
         }
-        if bestConfidence >= 0.9 {
+        var last : UIImage
+        if bestConfidence >= 0.91 {
+            
+            LastPlace = videoFrame
             var objects = [ObjectEntry]()
             if let cachedObjects = cachedScoreEntry?.objects {
                 objects = cachedObjects

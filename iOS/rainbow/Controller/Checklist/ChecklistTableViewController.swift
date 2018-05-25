@@ -87,5 +87,33 @@ class ChecklistTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        print("test console")
+        // print(UserDefaults.standard.object(forKey: "lastPlace"))
+        let readPath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("lastPlace")
+        let image    = UIImage(contentsOfFile: (readPath?.path)!)
+        let imageController = ImageViewController()
+        imageController.imageView.image = image
+        present(imageController, animated: true) {
+        }
     }
+}
+
+
+class ImageViewController : UIViewController {
+    var imageView: UIImageView = UIImageView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let button = UIButton(frame: CGRect(x: view.bounds.size.width - 100, y: 0, width: 100, height: 50))
+        button.setTitle("X", for: .normal)
+        button.backgroundColor = UIColor.black
+
+        imageView.frame = view.bounds
+        view.addSubview(imageView)
+        button.addTarget(self, action: #selector(onTapClose), for: UIControlEvents.touchUpInside)
+        view.addSubview(button)
+    }
+    @objc func onTapClose(){
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
