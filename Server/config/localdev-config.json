@@ -1,7 +1,7 @@
 {
     "Cloudant NoSQL DB-kl": {
-        "username": "hot",
-        "password": "dog",
+        "username": "admin",
+        "password": "password",
         "host": "nothotdog",
         "port": 443,
         "url": "hotdog url"

@@ -224,7 +224,7 @@ extension CameraController: LuminaDelegate {
                 guard let foundObject = filteredObjects.first else {
                     return
                 }
-                self.textPrompt = "You already found the \(foundObject.name)!"
+                self.textPrompt = "Congrats you found your \(foundObject.name)!"
                 return
             }
             guard let gameConfigObjects = gameConfigObjects else {
