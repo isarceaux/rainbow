@@ -224,7 +224,7 @@ extension CameraController: LuminaDelegate {
             return
         }
         var last : UIImage
-        if bestConfidence >= 0.91 {
+        if bestConfidence >= 0.9  {
             
             LastPlace = videoFrame
             var objects = [ObjectEntry]()

@@ -1,11 +1,7 @@
-[{
-		"name": "keys",
-		"colorIcon": "Apple.png",
-		"whiteIcon": "Apple---White.png"
-	},
+[
 	{
 		"name": "passport",
-		"colorIcon": "Bee.png",
-		"whiteIcon": "Bee---White.png"
+		"colorIcon": "Passport.png",
+		"whiteIcon": "Passport.png"
 	}
 ]
