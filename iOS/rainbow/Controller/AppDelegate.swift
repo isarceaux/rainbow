@@ -185,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
             return
         }
         print(bodyString)
-        showAlert(title: "WatsonML", message: bodyString)
+        showAlert(title: "Extra Eye", message: bodyString)
     }
     
     func showAlert (title: String, message: String) {

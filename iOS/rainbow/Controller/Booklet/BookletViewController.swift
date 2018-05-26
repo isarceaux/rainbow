@@ -29,44 +29,44 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        useDefaultPages()
+        useDefaultPages()
         
-        let urlString = "https://raw.githubusercontent.com/IBM/watsonml-booklet-data/master/booklet.json"
-        guard let url = URL(string: urlString) else {
-            print("url error")
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            if error != nil {
-                print(String(describing: error?.localizedDescription))
-                print("No internet")
-                // use Booklet.json if no internet
-                self.useDefaultPages()
-            }
-            
-            guard let data = data else {
-                return
-            }
-            
-            do {
-                //Decode retrived data with JSONDecoder and assing type of Article object
-                let pages = try JSONDecoder().decode([Page].self, from: data)
-                
-                //Get back to the main queue
-                DispatchQueue.main.async {
-                    self.pages = pages
-                    self.pageCount = pages.count
-                    self.createPageViewController()
-                    self.setupPageControl()
-                }
-            } catch let jsonError {
-                print(jsonError)
-                
-                // use booklet.json if jsonError
-                self.useDefaultPages()
-            }
-        }.resume()
+//        let urlString = "https://raw.githubusercontent.com/IBM/watsonml-booklet-data/master/booklet.json"
+//        guard let url = URL(string: urlString) else {
+//            print("url error")
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: url) { (data, _, error) in
+//            if error != nil {
+//                print(String(describing: error?.localizedDescription))
+//                print("No internet")
+//                // use Booklet.json if no internet
+//                self.useDefaultPages()
+//            }
+//
+//            guard let data = data else {
+//                return
+//            }
+//
+//            do {
+//                //Decode retrived data with JSONDecoder and assing type of Article object
+//                let pages = try JSONDecoder().decode([Page].self, from: data)
+//
+//                //Get back to the main queue
+//                DispatchQueue.main.async {
+//                    self.pages = pages
+//                    self.pageCount = pages.count
+//                    self.createPageViewController()
+//                    self.setupPageControl()
+//                }
+//            } catch let jsonError {
+//                print(jsonError)
+//
+//                // use booklet.json if jsonError
+//                self.useDefaultPages()
+//            }
+//        }.resume()
     }
     
     private func useDefaultPages() {
@@ -79,7 +79,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
                     self.pages = pages
                     self.pageCount = pages.count
                     self.createPageViewController()
-                    self.setupPageControl()
+//                    self.setupPageControl()
                 }
             } catch {
                 print("couldn't parse JSON Data")

@@ -3,5 +3,10 @@
 		"name": "passport",
 		"colorIcon": "Passport.png",
 		"whiteIcon": "Passport.png"
+	},
+	{
+		"name": "keys",
+		"colorIcon": "Bee.png",
+		"whiteIcon": "Bee---White.png"
 	}
 ]

@@ -165,7 +165,7 @@ class CameraController: LuminaViewController {
     
     @objc func updateTimeLabel() {
         if gameState == .nothingDetected {
-            self.textPrompt = GameTimer.getTimeElapsedString(for: cachedScoreEntry)
+             self.textPrompt = GameTimer.getTimeElapsedString(for: cachedScoreEntry)
         }
     }
 }
