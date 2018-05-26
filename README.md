@@ -17,5 +17,4 @@ We use AI and visual recognition to find your lost items! There already are apps
 3. Find your items : click on the checked item and see a picture of where it was last seen!
 
 ## Technology
-IBM Watson Machine Learning for AI
-CloudML for AI with Swift
+IBM Watson Machine Learning for AI & CloudML for AI with Swift
